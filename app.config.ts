@@ -20,6 +20,9 @@ const env = {
   scheme: schemeFromBundleId,
   iosBundleId: bundleId,
   androidPackage: bundleId,
+  // Backend API configuration
+  apiUrl: process.env.EXPO_PUBLIC_API_URL || "http://localhost:8000",
+  wsUrl: process.env.EXPO_PUBLIC_WS_URL || "ws://localhost:8000",
 };
 
 const config: ExpoConfig = {

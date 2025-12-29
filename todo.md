@@ -49,3 +49,46 @@
 - [x] Test all user flows
 - [x] Verify responsiveness on different screen sizes
 - [x] Create checkpoint
+
+## Backend Integration
+
+### API Client Setup
+- [x] Create axios API client with base URL configuration
+- [x] Add authentication interceptors (JWT tokens)
+- [x] Create API service layer for agents, workflows, chat, metrics
+
+### WebSocket Integration
+- [x] Setup WebSocket client for real-time updates
+- [x] Handle agent status events
+- [x] Handle workflow execution events
+- [x] Handle chat typing indicators and messages
+- [x] Handle system health and metrics updates
+
+### Dashboard Integration
+- [x] Fetch real agents from GET /api/v1/agents
+- [x] Display real-time agent status via WebSocket
+- [x] Fetch system metrics from GET /api/v1/metrics
+- [x] Implement pull-to-refresh with live data
+- [ ] Add agent details modal with real data
+
+### Workflow Integration
+- [x] Fetch workflows from GET /api/v1/workflows
+- [x] Save/update workflows via POST/PUT /api/v1/workflows
+- [x] Execute workflows via POST /api/v1/workflows/{id}/execute
+- [x] Display real-time workflow execution progress
+- [ ] Validate workflows before execution
+
+### Chat Integration
+- [x] Connect to WebSocket /ws/chat for real-time messaging
+- [x] Send messages via POST /api/v1/chat/messages
+- [x] Implement Quick Mode (⚡) with Groq/Gemini providers
+- [x] Implement Optimized Mode (🎯) with DeepSeek/OpenRouter
+- [x] Implement Long-term Mode (🔄) with 7-day persistence
+- [x] Display typing indicators from WebSocket
+- [x] Load chat history from GET /api/v1/chat/history
+
+### Authentication
+- [ ] Add login screen (UI not implemented, but auth service ready)
+- [x] Implement JWT token storage (SecureStore)
+- [x] Add token refresh logic
+- [x] Handle logout and session expiry
