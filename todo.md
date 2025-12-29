@@ -92,3 +92,27 @@
 - [x] Implement JWT token storage (SecureStore)
 - [x] Add token refresh logic
 - [x] Handle logout and session expiry
+
+## Major Redesign - User Feedback
+
+### Theme Overhaul
+- [x] Change to deep OLED black theme (#000000 background)
+- [x] Update all colors for OLED display
+- [x] Make UI more modern and less "generated"
+
+### Dashboard Redesign
+- [x] Move chat to main dashboard screen
+- [x] Add agent/provider selector for chat
+- [x] Change task modes from Quick/Optimized/Long-term to Regular/Continuous
+- [x] Integrate chat with agent selection
+
+### Workflow Canvas Fix
+- [x] Force landscape orientation for workflow screen
+- [x] Make canvas fully functional with proper gestures
+- [x] Improve visual design of workflow editor
+
+### New Features
+- [x] Create System Logs screen with live log streaming
+- [x] Create SSH Terminal screen for CLI access
+- [x] Add CLI compatibility layer
+- [x] Ensure mobile app works with CLI version of system

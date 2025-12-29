@@ -6,7 +6,6 @@ import { ComponentProps } from "react";
 import { OpaqueColorValue, type StyleProp, type TextStyle } from "react-native";
 
 type IconMapping = Record<SymbolViewProps["name"], ComponentProps<typeof MaterialIcons>["name"]>;
-type IconSymbolName = keyof typeof MAPPING;
 
 /**
  * Add your SF Symbols to Material Icons mappings here.
@@ -18,13 +17,21 @@ const MAPPING = {
   "paperplane.fill": "send",
   "chevron.left.forwardslash.chevron.right": "code",
   "chevron.right": "chevron-right",
-  "chart.bar.fill": "dashboard",
   "arrow.triangle.branch": "account-tree",
-  "message.fill": "chat",
+  "doc.text.fill": "description",
+  "terminal.fill": "terminal",
   "gearshape.fill": "settings",
-  "plus.circle.fill": "add-circle",
   "bell.fill": "notifications",
+  "chart.bar.fill": "bar-chart",
+  "arrow.uturn.backward": "undo",
+  "arrow.uturn.forward": "redo",
+  "plus.magnifyingglass": "zoom-in",
+  "minus.magnifyingglass": "zoom-out",
+  "plus.circle.fill": "add-circle",
+  "message.fill": "chat",
 } as IconMapping;
+
+type IconSymbolName = keyof typeof MAPPING;
 
 /**
  * An icon component that uses native SF Symbols on iOS, and Material Icons on Android and web.
