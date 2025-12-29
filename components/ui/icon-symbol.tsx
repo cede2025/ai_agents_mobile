@@ -29,6 +29,12 @@ const MAPPING = {
   "minus.magnifyingglass": "zoom-out",
   "plus.circle.fill": "add-circle",
   "message.fill": "chat",
+  "cpu.fill": "memory",
+  "globe": "language",
+  "moon.fill": "nightlight",
+  "server.rack": "dns",
+  "key.fill": "vpn-key",
+  "info.circle.fill": "info",
 } as IconMapping;
 
 type IconSymbolName = keyof typeof MAPPING;

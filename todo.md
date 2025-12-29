@@ -116,3 +116,45 @@
 - [x] Create SSH Terminal screen for CLI access
 - [x] Add CLI compatibility layer
 - [x] Ensure mobile app works with CLI version of system
+
+## Local AI Model Support
+
+### Translation Layer
+- [x] Install and configure LibreTranslate for translation
+- [x] Implement PL→EN translation before sending to model
+- [x] Implement EN→PL translation for model responses
+- [x] Add translation toggle in settings
+- [x] Cache translations to improve performance
+
+### Local AI Chat Tab
+- [x] Create new "Local AI" tab in navigation
+- [x] Design chat interface for local models
+- [x] Add model selector dropdown
+- [x] Show model info (size, quantization, context length)
+- [ ] Display inference time and tokens/second
+
+### Model Import & Storage
+- [x] Implement .tflite file picker from device storage
+- [ ] Create model metadata parser
+- [x] Build model storage manager (list, delete, info)
+- [x] Show storage usage per model
+- [x] Add model validation before import
+- [x] Support multiple model formats (LiteRT, TFLite)
+
+### Model Settings
+- [x] Temperature slider (0.0 - 2.0)
+- [x] Top-K parameter
+- [x] Top-P (nucleus sampling)
+- [x] Max tokens/length
+- [x] Context window size
+- [ ] Quantization level display
+- [ ] Batch size configuration
+
+### LiteRT Integration
+- [x] Install TensorFlow.js for React Native
+- [x] Create inference engine wrapper
+- [x] Implement tokenizer for text models (basic)
+- [ ] Add GPU acceleration support (WebGL backend)
+- [x] Handle model loading and unloading
+- [ ] Implement streaming responses
+- [x] Add error handling for OOM scenarios
