@@ -12,11 +12,11 @@ const schemeFromBundleId = `manus${timestamp}`;
 
 const env = {
   // App branding - update these values directly (do not use env vars)
-  appName: "AI Agents Mobile Dashboard",
-  appSlug: "ai_agents_mobile",
+  appName: "AI Agents",
+  appSlug: "{{project_name}}",
   // S3 URL of the app logo - set this to the URL returned by generate_image when creating custom logo
   // Leave empty to use the default icon from assets/images/icon.png
-  logoUrl: "",
+  logoUrl: "https://s3.us-east-1.amazonaws.com/assets.manus.im/generations/a1a3e8d5-1b2c-4d3e-9f8a-7b6c5d4e3f2a.png",
   scheme: schemeFromBundleId,
   iosBundleId: bundleId,
   androidPackage: bundleId,
