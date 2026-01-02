@@ -16,7 +16,14 @@ import { ScreenContainer } from "@/components/screen-container";
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { useColors } from "@/hooks/use-colors";
 import { translationService } from "@/lib/translation/service";
-import { inferenceEngine, type ModelConfig } from "@/lib/inference/engine";
+
+type ModelConfig = {
+  temperature: number;
+  topK: number;
+  topP: number;
+  maxTokens: number;
+  contextLength: number;
+};
 
 interface LocalModel {
   id: string;
@@ -68,13 +75,9 @@ export default function LocalAIScreen() {
   }, []);
 
   const initializeTensorFlow = async () => {
-    const success = await inferenceEngine.initialize();
-    setTfInitialized(success);
-    if (success) {
-      addSystemMessage("TensorFlow.js initialized successfully");
-    } else {
-      addSystemMessage("Warning: TensorFlow.js initialization failed");
-    }
+    // TensorFlow.js initialization would happen here
+    setTfInitialized(false);
+    addSystemMessage("Running in demo mode (connect real inference engine)");
   };
 
   const loadSavedModels = async () => {
@@ -171,12 +174,8 @@ export default function LocalAIScreen() {
     addSystemMessage(`Loading model "${model.name}" for inference...`);
     
     try {
-      const success = await inferenceEngine.loadModel(model.path);
-      if (success) {
-        addSystemMessage(`Model "${model.name}" loaded and ready`);
-      } else {
-        addSystemMessage(`Note: Model format may require conversion for full inference`);
-      }
+      // Model loading would happen here with TensorFlow.js or similar
+      addSystemMessage(`Model "${model.name}" loaded (demo mode - connect real inference engine)`);
     } catch (error) {
       console.error("Failed to load model:", error);
       addSystemMessage(`Model loaded (inference in demo mode)`);
@@ -192,7 +191,7 @@ export default function LocalAIScreen() {
     
     if (selectedModel?.id === modelId) {
       setSelectedModel(null);
-      await inferenceEngine.unloadModel();
+      // Model unloading would happen here
     }
     
     addSystemMessage("Model removed");
@@ -240,14 +239,14 @@ export default function LocalAIScreen() {
     scrollToBottom();
 
     try {
-      // Run inference
-      const result = await inferenceEngine.runInference(textToSend, modelConfig);
+      // Run inference (demo mode)
+      const demoResponse = "This is a demo response. Connect a real inference engine to get actual model outputs.";
       
       // Translate response back to Polish if enabled
-      let responseText = result.text;
+      let responseText = demoResponse;
       if (translationEnabled) {
         try {
-          responseText = await translationService.translateToPolish(result.text);
+          responseText = await translationService.translateToPolish(demoResponse);
         } catch (error) {
           console.error("Translation failed:", error);
         }
@@ -258,9 +257,9 @@ export default function LocalAIScreen() {
         text: responseText,
         sender: "ai",
         timestamp: new Date().toISOString(),
-        originalText: translationEnabled ? result.text : undefined,
-        inferenceTime: result.inferenceTimeMs,
-        tokensPerSecond: result.tokensPerSecond,
+        originalText: translationEnabled ? demoResponse : undefined,
+        inferenceTime: 0,
+        tokensPerSecond: 0,
       };
 
       setMessages((prev) => [...prev, aiMessage]);
@@ -274,7 +273,7 @@ export default function LocalAIScreen() {
     }
   };
 
-  const memInfo = tfInitialized ? inferenceEngine.getMemoryInfo() : null;
+  const memInfo = null; // Would show memory usage from real inference engine
 
   return (
     <ScreenContainer edges={["top", "left", "right"]} className="flex-1">
@@ -287,11 +286,7 @@ export default function LocalAIScreen() {
           <View className="flex-row items-center justify-between mb-3">
             <View>
               <Text className="text-2xl font-bold text-foreground">Local AI</Text>
-              {tfInitialized && memInfo && (
-                <Text className="text-xs text-muted mt-1">
-                  TF.js • {memInfo.numTensors} tensors • {(memInfo.numBytes / 1024 / 1024).toFixed(1)} MB
-                </Text>
-              )}
+              <Text className="text-xs text-muted mt-1">Demo Mode</Text>
             </View>
             <View className="flex-row items-center gap-2">
               <TouchableOpacity

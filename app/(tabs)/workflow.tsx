@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
-import * as ScreenOrientation from "expo-screen-orientation";
 import { ScreenContainer } from "@/components/screen-container";
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { useColors } from "@/hooks/use-colors";
@@ -13,23 +12,8 @@ export default function WorkflowScreen() {
   const [selectedWorkflow, setSelectedWorkflow] = useState<Workflow | null>(null);
   const [loading, setLoading] = useState(false);
 
-  // Force landscape orientation when this screen is active
-  useEffect(() => {
-    const lockOrientation = async () => {
-      try {
-        await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
-      } catch (error) {
-        console.log("Could not lock orientation:", error);
-      }
-    };
-
-    lockOrientation();
-
-    // Unlock when leaving screen
-    return () => {
-      ScreenOrientation.unlockAsync();
-    };
-  }, []);
+  // Landscape orientation would be ideal for workflow editor
+  // but removed to simplify build
 
   const handleSave = async () => {
     if (!selectedWorkflow) return;
