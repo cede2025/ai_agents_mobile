@@ -35,13 +35,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
         }}
       />
-      <Tabs.Screen
-        name="workflow"
-        options={{
-          title: "Workflow",
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="arrow.triangle.branch" color={color} />,
-        }}
-      />
+
       <Tabs.Screen
         name="logs"
         options={{
