@@ -88,7 +88,7 @@ const config: ExpoConfig = {
         android: {
           compileSdkVersion: 34,
           targetSdkVersion: 34,
-          minSdkVersion: 21,
+          minSdkVersion: 24,
           buildToolsVersion: "34.0.0",
           buildArchs: ["armeabi-v7a", "arm64-v8a"],
           enableProguardInReleaseBuilds: false,
